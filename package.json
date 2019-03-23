@@ -1,0 +1,12 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "a weather app",
+  "main": "index.js",
+  "author": "Christina Branson",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "react": "^16.8.5"
+  }
+}
