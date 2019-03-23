@@ -1,0 +1,3 @@
+cached_data/forecast/*.dat
+cached_data/previous/*.dat
+cached_data/precipitation/*.dat
