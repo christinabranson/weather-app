@@ -30,7 +30,7 @@ lon = "-75.1652"
 baseUrl = "https://api.darksky.net/forecast/"
 #yesterday = (date.today() - timedelta(days=1))
 tz = pytz.timezone('America/New_York')
-for x in range(1,7):
+for x in range(1,10):
     day = str(datetime.strftime(datetime.now(tz=tz) - timedelta(days=x),"%s"))
     dayDate = str(datetime.strftime(datetime.now(tz=tz) - timedelta(days=x),"%Y-%m-%d"))
     url = baseUrl + key + "/" + lat + "," + lon + "," + day + "?exclude=daily,currently,flags,minutely,alerts"
