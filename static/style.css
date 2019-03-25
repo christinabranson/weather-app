@@ -1,3 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Anton|Roboto");
+
 body {
-    background: #eee;
+  background: #eee
+    url("https://weather-app-chrissybranso.c9users.io/static/bg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  text-align: right;
+  font-size: 4em;
+}
+
+h2 {
+  text-align: left;
+  font-size: 4em;
+}
+
+#main {
+  background: #fff;
+  padding: 40px;
+  border: 10px solid #000;
+
+  margin: 50px auto;
+}
+
+.footer {
+  margin: auto 50px;
+  text-align: center;
 }

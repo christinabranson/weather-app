@@ -9,46 +9,115 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 </head>
 <body>
-<div class="container">
-  <h1>Should I water my garden today?</h1>
-  <h2>No!</h2>
-  
-  {% if hasData %}
-      <canvas id="precipChart" width="800" height="400"></canvas>
-  {% else %}
-      <p>No data to display!</p>
-  {% endif %}
+<div id="main" class="container" class="align-middle">
+  <div class="row">
+    <div class="col col-lg-6">
+      <h1 class="float-right">Should I water <br/> my garden?</h1>
+    </div>
+    <div class="col col-lg-6">
+      <h2>Yes!</h2>
+      <p>It's rained .7 inches in the past week.
+        <br/> We recommend gardens get at least 1 inch of rain per week.
+      </p>
+    </div>
+  </div>
+<div class="row">
+  <div class="col" id="canvasWrapper">
+  <canvas id="precipChart" width="1040" height="300"></canvas>
+  </div></div>
+
+  <div class="row footer">
+    <div class="col">
+      Made by Christina Branson
+      <br/>
+      <a href="https://darksky.net/poweredby/" target="_blank">Powered By DarkSky</a>
+      <br/> Run with Python, Flask, & Charts.js. View code on <a href="https://github.com/christinabranson/weather-app" target="_blank">Github</a>.
+      <br/>
+      <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@smcauliffe?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Sean McAuliffe"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Sean McAuliffe</span></a>
+    </div>
+  </div>
 </div>
 </body>
 
 {% if hasData %}
 <script>
-var ctx = document.getElementById('precipChart').getContext('2d');
+Chart.defaults.global.showScale = false;
+Chart.defaults.global.legend.display = false;
+Chart.defaults.global.tooltips.enabled = false;
+Chart.defaults.scale.gridLines.display = false;
+
+//var canvas = document.getElementById("precipChart");
+//canvas.setAttribute("height", $("#canvasWrapper").width());
+//console.log( $("#canvasWrapper").width() );
+var ctx = document.getElementById("precipChart").getContext("2d");
+ctx.height = 300;
+ctx.height = $("#canvasWrapper").width();
 var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [{{ precipArrayKeysString }}],
-        datasets: [{
-            label: 'inches of Precip',
-            data: [{{ precipArrayValuesString }}],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)'
-            ],
-            borderWidth: 1
-        }]
+  type: "line",
+  data: [{{ precipArrayValuesString }}],
+    datasets: [
+      {
+        //label: 'inches of Precip',
+        data: [{{ precipArrayValuesString }}],
+        backgroundColor: ["rgba(255, 99, 132, 0)"],
+        borderColor: ["rgba(0, 0, 0, 1)"],
+        borderWidth: 5,
+        lineTension: 0
+      },
+      {
+        //label: 'inches of Precip',
+        data: [{{ previousWeekAccumulationDataValuesString }}],
+        backgroundColor: ["rgba(70, 85, 110, 0.5)"],
+        borderColor: ["rgba(0, 0, 0, 0)"],
+        borderWidth: 0,
+        lineTension: 0
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: true,
+    responsive: false,
+    legend: {
+      display: false
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+    elements: {
+      point: {
+        radius: 0,
+        hitRadius: 0,
+        hoverRadius: 0
+      }
+    },
+    scales: {
+      xAxes: [
+        {
+          barPercentage: 1,
+          gridLines: {
+            offsetGridLines: true,
+            gridLines: {
+              display: false,
+              drawOnChartArea: false,
+              color: "rgba(0, 0, 0, 0)",
+            }
+          }
         }
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            min: 0.0,
+            max: 1.0,
+            stepSize: 1,
+            gridLines: {
+              display: false,
+              drawOnChartArea: false,
+              color: "rgba(0, 0, 0, 0)",
+            }
+          }
+        }
+      ]
     }
+  }
 });
 </script>
 {% endif %}
