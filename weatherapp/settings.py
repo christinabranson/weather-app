@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x(jg=9lx8)vvsfm+gjeq*v5@!cbw5x$srb8*v_kq^ed^zgu5aa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = []
 
@@ -179,3 +180,7 @@ LOGGING = {
         }
     },
 }
+
+DARK_SKY_API_KEY = config('DARK_SKY_API_KEY')
+DARK_SKY_API_LAT = config('DARK_SKY_API_LAT', default=39.9526)
+DARK_SKY_API_LON = config('DARK_SKY_API_LON', default=-75.1652)

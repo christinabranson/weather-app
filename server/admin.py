@@ -11,11 +11,11 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(CustomUser, UserAdmin)
 
 class WeatherDataAdmin(admin.ModelAdmin):
-    list_display = ("datetime", "precip_amount")
+    list_display = ("date", "precip_amount")
     list_per_page = 25
 admin.site.register(WeatherData, WeatherDataAdmin)
 
 class ManualWeatherDataAdmin(admin.ModelAdmin):
-    list_display = ("datetime", "precip_amount")
+    list_display = ("date", "precip_amount")
     list_per_page = 25
 admin.site.register(ManualWeatherData, ManualWeatherDataAdmin)
