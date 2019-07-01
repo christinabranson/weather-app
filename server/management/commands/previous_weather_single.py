@@ -53,7 +53,7 @@ class Command(BaseCommand):
             logger.debug(json_data)
             dailyPrecipTotal = self.getDailyTotalPrecipitation(json_data)
 
-            model_datetime = datetime.fromtimestamp(timestamp)
+            model_datetime = datetime.fromtimestamp(timestamp, tz=tz)
 
             daily_precip = WeatherData.objects.get_or_create(date=model_datetime)[0]
             daily_precip.precip_amount = dailyPrecipTotal

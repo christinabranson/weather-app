@@ -45,7 +45,7 @@ class Command(BaseCommand):
                 # print dailydata['time']
                 time = dailydata['time']
                 tz = pytz.timezone('America/New_York')
-                model_datetime = datetime.fromtimestamp(time)
+                model_datetime = model_datetime = datetime.fromtimestamp(time, tz=tz)
 
                 daily_precip = WeatherData.objects.get_or_create(date=model_datetime)[0]
                 daily_precip.precip_amount = dailydata['precipIntensity']
