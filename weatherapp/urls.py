@@ -18,6 +18,7 @@ from django.urls import path
 from api import views as api_views
 from frontend import views as frontend_views
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('api/kitchensink', api_views.kitchensink, name='kitchensink'),

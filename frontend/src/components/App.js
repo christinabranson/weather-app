@@ -3,8 +3,14 @@ import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import DataGrid from "./DataGrid";
 
+/**
+    API Endpoint: api/kitchensink
+    File Endpoint: static/frontend/data.json
+*/
+
 const App = () => (
-  <DataProvider source="api" endpoint="api/kitchensink" render={data => <DataGrid data={data} />} />
+  <DataProvider endpoint="api/kitchensink" />
 );
+
 const wrapper = document.getElementById("app");
 wrapper ? ReactDOM.render(<App />, wrapper) : null;

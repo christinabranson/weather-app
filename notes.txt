@@ -1,0 +1,3 @@
+TODO:
+- Ability to read from API (dev) or file (github pages)
+- Need the ability to alter multiple areas on the site with one API call
