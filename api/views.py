@@ -6,15 +6,13 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 import json
 from django.http import JsonResponse
+from server.models import WeatherData
 
 logger = logging.getLogger(__name__)
 
 
-
-
-def home(request):
-    logger.debug("baseapp.views.home.home")
-
-    return render(request, 'home.html', {
-
-    })
+def kitchensink(request):
+    logger.debug("baseapp.views.home.kitchensink")
+    data = WeatherData.get_kitchen_sink()
+    logger.debug(data)
+    return JsonResponse(data, safe=False)

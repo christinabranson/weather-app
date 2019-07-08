@@ -9,9 +9,9 @@ from django.http import JsonResponse
 
 logger = logging.getLogger(__name__)
 
-def home(request):
-    logger.debug("baseapp.views.home.home")
+def index(request):
+    logger.debug("frontend.views.index")
 
-    return render(request, 'home.html', {
+    return render(request, 'index.html', {
 
     })

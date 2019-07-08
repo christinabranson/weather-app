@@ -16,15 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from api import views as api_views
-#from frontend import views as frontend_views
+from frontend import views as frontend_views
 from django.conf import settings
 
 urlpatterns = [
+    path('api/kitchensink', api_views.kitchensink, name='kitchensink'),
     path('admin/', admin.site.urls),
 ]
 
 # we only need the front end code on the development
-#if settings.DEBUG:
-#    urlpatterns += path('', frontend_views.home, name='home')
-#else:
-#    urlpatterns += path('', api_views.home, name='home')
+if settings.DEBUG:
+    urlpatterns.append(path('', frontend_views.index, name='index'))
+else:
+    urlpatterns.append(path('', api_views.home, name='index'))

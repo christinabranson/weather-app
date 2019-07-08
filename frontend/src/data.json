@@ -1,0 +1,115 @@
+{
+   "data":[
+      {
+         "label":"Friday, 28 June",
+         "date":"2019-06-28T00:00:00-04:00",
+         "amount_accumulation":0,
+         "amount_rain":0.024,
+         "amount_manual":0.4,
+         "percent_rain":"2.4%",
+         "percent_manual":"40.0%",
+         "percent_accumulation":"0.0%",
+         "percent_empty":"57.6%"
+      },
+      {
+         "label":"Saturday, 29 June",
+         "date":"2019-06-29T00:00:00-04:00",
+         "amount_accumulation":0.42,
+         "amount_rain":0.196,
+         "amount_manual":0,
+         "percent_rain":"19.6%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"42.0%",
+         "percent_empty":"38.4%"
+      },
+      {
+         "label":"Sunday, 30 June",
+         "date":"2019-06-30T00:00:00-04:00",
+         "amount_accumulation":0.62,
+         "amount_rain":0.002,
+         "amount_manual":0,
+         "percent_rain":"0.2%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"62.0%",
+         "percent_empty":"37.8%"
+      },
+      {
+         "label":"Monday, 1 July",
+         "date":"2019-07-01T00:00:00-04:00",
+         "amount_accumulation":0.62,
+         "amount_rain":0.0002,
+         "amount_manual":0,
+         "percent_rain":"0.02%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"62.0%",
+         "percent_empty":"37.98%"
+      },
+      {
+         "label":"Tuesday, 2 July",
+         "date":"2019-07-02T00:00:00-04:00",
+         "amount_accumulation":0.62,
+         "amount_rain":0.009,
+         "amount_manual":0,
+         "percent_rain":"0.9%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"62.0%",
+         "percent_empty":"37.1%"
+      },
+      {
+         "label":"Wednesday, 3 July",
+         "date":"2019-07-03T00:00:00-04:00",
+         "amount_accumulation":0.63,
+         "amount_rain":0.0048,
+         "amount_manual":0,
+         "percent_rain":"0.48%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"63.0%",
+         "percent_empty":"36.52%"
+      },
+      {
+         "label":"Thursday, 4 July",
+         "date":"2019-07-04T00:00:00-04:00",
+         "amount_accumulation":0.64,
+         "amount_rain":0.001,
+         "amount_manual":0,
+         "percent_rain":"0.1%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"64.0%",
+         "percent_empty":"35.9%"
+      },
+      {
+         "label":"Friday, 5 July",
+         "date":"2019-07-05T00:00:00-04:00",
+         "amount_accumulation":0.64,
+         "amount_rain":0.0034,
+         "amount_manual":0,
+         "percent_rain":"0.34%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"64.0%",
+         "percent_empty":"35.66%"
+      },
+      {
+         "label":"Saturday, 6 July",
+         "date":"2019-07-06T00:00:00-04:00",
+         "amount_accumulation":0.64,
+         "amount_rain":0.0026,
+         "amount_manual":0,
+         "percent_rain":"0.26%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"64.0%",
+         "percent_empty":"35.74%"
+      },
+      {
+         "label":"Sunday, 7 July",
+         "date":"2019-07-07T00:00:00-04:00",
+         "amount_accumulation":0.64,
+         "amount_rain":0.0143,
+         "amount_manual":0,
+         "percent_rain":"1.43%",
+         "percent_manual":"0.0%",
+         "percent_accumulation":"64.0%",
+         "percent_empty":"34.57%"
+      }
+   ],
+   "total_accumulation":1
+}

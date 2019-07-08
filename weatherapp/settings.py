@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'api',
 ]
 
-# we only need the front end code on the development
-#if DEBUG:
-#    INSTALLED_APPS += "frontend"
+# We only need the front end code on the development
+if DEBUG:
+    INSTALLED_APPS.append("frontend")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
