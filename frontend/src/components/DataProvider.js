@@ -2,6 +2,8 @@ import React, {
     Component
 } from "react";
 import DataGrid from "./DataGrid";
+import Header from "./Header";
+import Footer from "./Footer";
 
 class DataProvider extends Component {
     state = {
@@ -31,7 +33,9 @@ class DataProvider extends Component {
         if (this.state.loaded) {
             return(
                 <div>
+                    <Header data={this.state.data} />
                     <DataGrid data={this.state.data} />
+                    <Footer />
                 </div>
             )
         } else {

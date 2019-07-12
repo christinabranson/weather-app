@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Titillium+Web&display=swap');
+
+$body-background-color: #BCC1BB;
+
+$header-background-color-top: #0a3d62;
+$header-background-color-bottom: #3c6382;
+
+$data-bar-background-color: #eee;
+$data-bar-border-color: #eee;
+$data-box-border-color: #eee;
+
+$data-color-empty: #BCC1BB;
+$data-color-accumulation: #D5E8D3;
+$data-color-manual: #90BE8B;
+$data-color-rain: #1D281B;
+
+body {
+  background: $body-background-color;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.header-container {
+  background: #eee url('https://res.cloudinary.com/dwv9lrwvl/image/upload/v1562887206/Weather%20App/drop-of-water-3671613_1920_nhgu6n.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top:  150px;
+    padding-bottom: 200px;
+}
+
+.header {
+  margin: 0px auto;
+}
+
+.footer {
+  margin: 50px auto;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 900;
+  font-size: 5em;
+  color: #fff;
+  margin-top: -50px;
+}
+
+h1 span.answer {
+  color: $data-color-accumulation;
+}
+
+p {
+  color: #fff;
+  font-size: 1.25em;
+}
+
+.fa {
+  margin: 20px auto;
+  font-size: 12em;
+  color: #0a3d62;
+}
+
+
+.data-row {
+  background: $data-bar-background-color;
+  padding: 25px 50px;
+}
+
+.data-box-day {
+  font-size: 1em;
+}
+
+.data-box-date {
+  font-size: 0.7em;
+}
+
+.big-data-box {
+  width: 75%;
+  margin: 10px;
+  padding: 5px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.big-data-box:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  z-index: 1000;
+}
+
+.big-data-box.today {
+  background: #fff;
+  border: 1px solid #90BE8B;
+}
+
+.databox {
+  width: 95%;
+  height: 200px;
+  background: #ccc;
+  margin: 2.5% auto;
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+}
+
+.databox .rain {
+  background: $data-color-rain;
+}
+
+.databox .manual {
+  background: $data-color-manual;
+}
+
+.databox .accumulation {
+  background: $data-color-accumulation;
+}
+
+.databox .empty {
+  background: $data-color-empty;
+}
+
+table {
+font-size: .8em;
+}

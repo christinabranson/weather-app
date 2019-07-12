@@ -15,18 +15,18 @@
   //box-shadow: inset 10x rgba(0,0,0,0.2);
 }
 
-.databox .rain {
+.data-box .rain {
   background: #82ccdd;
 }
 
-.databox .manual {
+.data-box .manual {
   background: #60a3bc;
 }
 
-.databox .accumulation {
+.data-box .accumulation {
   background: #3c6382;
 }
 
-.databox .empty {
+.data-box .empty {
   background: #0a3d62;
 }

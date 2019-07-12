@@ -20,7 +20,7 @@ class WeatherData(models.Model):
         data_array["summary"] = {}
         data_array["data"] = []
 
-        startDays = 5
+        startDays = 4
         endDays = 5
 
         tz = pytz.timezone('America/New_York')
@@ -57,9 +57,9 @@ class WeatherData(models.Model):
 
             data = {}
 
-            data["label"] = datetime.strftime(day, "%A, %-d %B")
+            data["label"] = datetime.strftime(day, "%A, %d %B")
             data["day"] = datetime.strftime(day, "%A")
-            data["date"] = datetime.strftime(day, "%-d %B")
+            data["date"] = datetime.strftime(day, "%d %B")
             data["tooltiplabel"] = datetime.strftime(day, "%d%m%Y")
 
             data["amount_accumulation"] = round(accumulation, 2)
@@ -72,7 +72,7 @@ class WeatherData(models.Model):
             )
             if qs_day_weather_data.count() > 0:
                 day_weather_data = qs_day_weather_data[0]
-                data["amount_rain"] = day_weather_data.precip_amount
+                data["amount_rain"] = round(day_weather_data.precip_amount, 2)
                 accumulation += day_weather_data.precip_amount
             else:
                 data["amount_rain"] = 0
@@ -85,7 +85,7 @@ class WeatherData(models.Model):
             )
             if qs_day_manual_weather_data.count() > 0:
                 day_manual_weather_data = qs_day_manual_weather_data[0]
-                data["amount_manual"] = day_manual_weather_data.precip_amount
+                data["amount_manual"] = round(day_manual_weather_data.precip_amount, 2)
                 accumulation += day_manual_weather_data.precip_amount
             else:
                 data["amount_manual"] = 0
@@ -100,10 +100,12 @@ class WeatherData(models.Model):
                 data[variable] = str(data[variable]) + "%"
 
             data["today"] = 0
-            if datetime.strftime(day, "%-d") == datetime.strftime(time_now, "%-d"):
+            data["today_class"] = ""
+            if datetime.strftime(day, "%d") == datetime.strftime(time_now, "%d"):
                 reached_today = True
                 previous_week_accumulation = round(accumulation, 2)
                 data["today"] = 1
+                data["today_class"] = "today"
             else:
                 if reached_today and not reached_tomorrow:
                     reached_tomorrow = True
@@ -117,14 +119,16 @@ class WeatherData(models.Model):
         # Now do the logic of whether we should water this week or not
         if previous_week_accumulation >= 1:
             data_array["summary"]["should_water"] = False
-            data_array["summary"]["should_water_message"] = "We've already reached " + str(round(previous_week_accumulation, 2)) + " inch(es) of rain this week. This meets our weekly goal of 1 inch per week."
+            data_array["summary"]["should_water_message"] = "We've already reached " + str(round(previous_week_accumulation, 2)) + "in of rain this week. This meets our weekly goal of 1 inch per week."
         else:
             if previous_week_accumulation + next_day_forecast_accumulation >= 1:
                 data_array["summary"]["should_water"] = False
-                data_array["summary"]["should_water_message"] = "We've already reached " + str(round(previous_week_accumulation, 2)) + " inch(es) of rain this week and we're expecting another " + str(round(next_day_forecast_accumulation, 2)) + " inch(es) tomorrow. This meets our weekly goal of 1 inch per week."
+                data_array["summary"]["should_water_message"] = "We've already reached " + str(round(previous_week_accumulation, 2)) + "in of rain this week and we're expecting another " + str(round(next_day_forecast_accumulation, 2)) + "in tomorrow. This meets our weekly goal of 1 inch per week."
             else:
                 data_array["summary"]["should_water"] = True
-                data_array["summary"]["should_water_message"] = "We've only reached " + str(round(previous_week_accumulation, 2)) + " inch(es) of rain this week. This doesn't meet our weekly goal of 1 inch per week."
+                data_array["summary"]["should_water_message"] = "We've only reached " + str(round(previous_week_accumulation, 2)) + "in of rain this week. This doesn't meet our weekly goal of 1 inch per week."
+
+        data_array["summary"]["should_water_formatted"] = "Yes!" if data_array["summary"]["should_water"] else "No!"
 
         # Write to file
         with open("frontend/static/frontend/data.json", "w") as json_file:

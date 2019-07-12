@@ -9,12 +9,10 @@ class DataGrid extends React.Component {
     var data = this.props.data ? this.props.data.data : null;
     if (data){
         return (
-          <div className="container">
-            <div className="row">
+        <div className="data-row container-fluid">
+          <div id="data" className="row">
             {data.map(item => (
               <div key={item.label} class="col px-1">
-                  <p>{item.day}</p>
-                  <small>{item.date}</small>
                   <DataBox item={item} />
               </div>
             ))}

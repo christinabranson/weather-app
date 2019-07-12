@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import DataGrid from "./DataGrid";
+import './main.scss';
 
 /**
     API Endpoint: api/kitchensink
