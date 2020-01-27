@@ -1,0 +1,19 @@
+{% extends 'adminlte/base.html' %}
+
+{% block body_class %}
+layout-top-nav
+{% endblock %}
+{% block nav_header  %}
+{% endblock %}
+{% block nav_sidebar %}
+{% endblock %}
+{% block title %}Should I Water My Garden?{% endblock %}
+
+{% block javascript %}
+{% load static %}
+<script src="{% static "frontend/main.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="app"></div>
+{% endblock %}

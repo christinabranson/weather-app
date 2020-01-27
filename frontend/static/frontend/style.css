@@ -1,0 +1,32 @@
+.data-box {
+  width: 50px;
+  height: 200px;
+  background: #ccc;
+  border-radius: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  //-moz-box-shadow: inset 7px 10px 0px -6px rgba(0,0,0,0.2);
+  //-webkit-box-shadow: inset 7px 10px 0px -6px rgba(0,0,0,0.2);
+  //box-shadow: inset 10x rgba(0,0,0,0.2);
+}
+
+.data-box .rain {
+  background: #82ccdd;
+}
+
+.data-box .manual {
+  background: #60a3bc;
+}
+
+.data-box .accumulation {
+  background: #3c6382;
+}
+
+.data-box .empty {
+  background: #0a3d62;
+}
