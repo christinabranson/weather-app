@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "chart.js": "^2.9.3",
     "node-sass": "^4.12.0",
+    "react-chartjs-2": "^2.8.0",
     "reactstrap": "^8.0.0",
     "sass-loader": "^7.1.0"
   },

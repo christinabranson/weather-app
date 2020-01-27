@@ -90,10 +90,16 @@ class WeatherData(models.Model):
             else:
                 data["amount_manual"] = 0
 
-            data["percent_rain"] = round(data["amount_rain"] / data_array["summary"]["total_accumulation"] * 100, 2)
-            data["percent_manual"] = round(data["amount_manual"] / data_array["summary"]["total_accumulation"] * 100, 2)
-            data["percent_accumulation"] = round(data["amount_accumulation"] / data_array["summary"]["total_accumulation"] * 100, 2)
-            data["percent_empty"] = round(100 - data["percent_rain"] - data["percent_manual"] - data["percent_accumulation"], 2)
+            if data_array["summary"]["total_accumulation"] > 0:
+                data["percent_rain"] = round(data["amount_rain"] / data_array["summary"]["total_accumulation"] * 100, 2)
+                data["percent_manual"] = round(data["amount_manual"] / data_array["summary"]["total_accumulation"] * 100, 2)
+                data["percent_accumulation"] = round(data["amount_accumulation"] / data_array["summary"]["total_accumulation"] * 100, 2)
+                data["percent_empty"] = round(100 - data["percent_rain"] - data["percent_manual"] - data["percent_accumulation"], 2)
+            else:
+                data["percent_rain"] = 0
+                data["percent_manual"] = 0
+                data["percent_accumulation"] = 0
+                data["percent_empty"] = 0
 
             # change them to a string and add the percentages
             for variable in {"percent_rain", "percent_manual", "percent_accumulation", "percent_empty"}:
