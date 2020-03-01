@@ -12,7 +12,13 @@ logger = logging.getLogger(__name__)
 
 
 def kitchensink(request):
-    logger.debug("baseapp.views.home.kitchensink")
+    logger.debug("api.views.home.kitchensink")
     data = WeatherData.get_kitchen_sink()
+    logger.debug(data)
+    return JsonResponse(data, safe=False)
+
+def at_a_glance(request):
+    logger.debug("api.views.home.at_a_glance")
+    data = WeatherData.get_at_a_glance()
     logger.debug(data)
     return JsonResponse(data, safe=False)

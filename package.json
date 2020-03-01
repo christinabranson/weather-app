@@ -15,8 +15,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js"
+    "dev": "webpack --mode development ./frontend_react/src/index.js --output ./frontend_react/static/frontend/main.js",
+    "build": "webpack --mode production ./frontend_react/src/index.js --output ./frontend_react/static/frontend/main.js"
   },
   "repository": {
     "type": "git",
