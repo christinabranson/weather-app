@@ -147,6 +147,9 @@
          var percentFill = Math.min(1, amountTotal);;
          var percentManual = 1 - percentFill;
 
+         percentFill = Math.round((percentFill + Number.EPSILON) * 100) / 100;
+         percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
+
           new Chartist.Pie('#chart_sidebar1', {
              series: [percentFill, percentManual]
            }, {
@@ -168,6 +171,9 @@
          var percentFill = Math.min(1, amountTotal);;
          var percentManual = 1 - percentFill;
 
+         percentFill = Math.round((percentFill + Number.EPSILON) * 100) / 100;
+         percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
+
           new Chartist.Pie('#chart_sidebar2', {
              series: [percentFill, percentManual]
            }, {
@@ -188,6 +194,9 @@
        if (amountTotal > 0) {
          var percentFill = Math.min(1, amountTotal);;
          var percentManual = 1 - percentFill;
+
+         percentFill = Math.round((percentFill + Number.EPSILON) * 100) / 100;
+         percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
 
           new Chartist.Pie('#chart_sidebar3', {
              series: [percentFill, percentManual]

@@ -28,7 +28,5 @@ urlpatterns = [
 ]
 
 # we only need the front end code on the development
-#if settings.DEBUG:
-#    urlpatterns.append(path('', frontend_views.index, name='index'))
-#else:
-#    urlpatterns.append(path('', api_views.home, name='index'))
+if settings.DEBUG:
+    urlpatterns.append(path('', frontend_views.index, name='index'))
