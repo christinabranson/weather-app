@@ -3,8 +3,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.01,
-                "total": 0.01
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "23 February",
@@ -19,8 +19,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.02,
-                "total": 0.02
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "24 February",
@@ -35,8 +35,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.19,
-                "total": 0.19
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "25 February",
@@ -51,8 +51,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.1,
-                "total": 0.1
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "26 February",
@@ -66,9 +66,9 @@
         },
         {
             "data": {
-                "manual": 0.1,
-                "rain": 0.28,
-                "total": 0.38
+                "manual": 0,
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "27 February",
@@ -82,9 +82,9 @@
         },
         {
             "data": {
-                "manual": 0.4,
-                "rain": 0.0,
-                "total": 0.4
+                "manual": 0,
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "28 February",
@@ -99,8 +99,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.23,
-                "total": 0.23
+                "rain": 0,
+                "total": 0
             },
             "labels": {
                 "date": "29 February",
@@ -147,8 +147,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.0,
-                "total": 0.0
+                "rain": 0.02,
+                "total": 0.02
             },
             "labels": {
                 "date": "03 March",
@@ -195,8 +195,8 @@
         {
             "data": {
                 "manual": 0,
-                "rain": 0.03,
-                "total": 0.03
+                "rain": 0.02,
+                "total": 0.02
             },
             "labels": {
                 "date": "06 March",
@@ -226,20 +226,20 @@
         }
     ],
     "summary": {
-        "date_created": "03/01/2020, 15:50:31",
+        "date_created": "03/01/2020, 16:58:26",
         "last_day": {
             "manual": 0,
-            "rain": 0.23,
+            "rain": 0.0,
             "start": "2020-02-29 00:00:00-05:00",
             "stop": "2020-03-01 00:00:00-05:00",
-            "total": 0.23
+            "total": 0.0
         },
         "last_week": {
-            "manual": 0.5,
-            "rain": 0.83,
+            "manual": 0,
+            "rain": 0.0,
             "start": "2020-02-23 00:00:00-05:00",
             "stop": "2020-03-01 00:00:00-05:00",
-            "total": 1.33
+            "total": 0.0
         },
         "next_day": {
             "rain": 0.0,
@@ -248,10 +248,10 @@
             "total": 0.0
         },
         "next_week": {
-            "rain": 0.030600000000000002,
+            "rain": 0.0382,
             "start": "2020-03-01 00:00:00-05:00",
             "stop": "2020-03-08 00:00:00-05:00",
-            "total": 0.030600000000000002
+            "total": 0.0382
         },
         "recommendation": {
             "bool": true,

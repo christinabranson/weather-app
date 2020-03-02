@@ -15,3 +15,4 @@ class Command(BaseCommand):
 
         with connection.cursor() as cursor:
             cursor.execute("delete from server_weatherdata", [])
+            cursor.execute("delete from server_manualweatherdata", [])

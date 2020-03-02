@@ -19,6 +19,7 @@ from api import views as api_views
 from django.conf import settings
 
 urlpatterns = [
+    path('api/future_weather', api_views.future_weather, name='api.future_weather'),
     path('api/kitchensink', api_views.kitchensink, name='api.kitchensink'),
     path('api/at_a_glance', api_views.at_a_glance, name='api.at_a_glance'),
     path('', include('frontend.urls')),

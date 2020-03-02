@@ -23,11 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'x(jg=9lx8)vvsfm+gjeq*v5@!cbw5x$srb8*v_kq^ed^zgu5aa'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool, default=False)
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -40,11 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'server',
     'api',
+    'frontend',
 ]
-
-# We only need the front end code on the development
-if DEBUG:
-    INSTALLED_APPS.append("frontend")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,7 +116,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTH_USER_MODEL = "server.User"
@@ -146,24 +137,24 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
         },
-        'file_server': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/server.log'),
-            'when': 'D',  # this specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 30,  # how many backup file to keep, 10 days
-            'formatter': 'verbose',
-        },
-        'file_api': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/api.log'),
-            'when': 'D',  # this specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 30,  # how many backup file to keep, 10 days
-            'formatter': 'verbose',
-        },
+        #'file_server': {
+        #    'level': 'DEBUG',
+        #    'class': 'logging.handlers.TimedRotatingFileHandler',
+        #    'filename': os.path.join(BASE_DIR, 'logs/server.log'),
+        #    'when': 'D',  # this specifies the interval
+        #    'interval': 1,  # defaults to 1, only necessary for other values
+        #    'backupCount': 30,  # how many backup file to keep, 10 days
+        #    'formatter': 'verbose',
+        #},
+        #'file_api': {
+        #    'level': 'DEBUG',
+        #    'class': 'logging.handlers.TimedRotatingFileHandler',
+        #    'filename': os.path.join(BASE_DIR, 'logs/api.log'),
+        #    'when': 'D',  # this specifies the interval
+        #    'interval': 1,  # defaults to 1, only necessary for other values
+        #    'backupCount': 30,  # how many backup file to keep, 10 days
+        #    'formatter': 'verbose',
+        #},
     },
     'loggers': {
         'django': {
@@ -171,13 +162,21 @@ LOGGING = {
             'level': 'INFO',
         },
         'server': {
-            'handlers': ['console'] if DEBUG else ['file_server'],
+            'handlers': ['console'],
             'level': 'DEBUG',
         },
         'api': {
-            'handlers': ['console'] if DEBUG else ['file_api'],
+            'handlers': ['console'],
             'level': 'DEBUG',
-        }
+        },
+        #'server': {
+        #    'handlers': ['console'] if DEBUG else ['file_server'],
+        #    'level': 'DEBUG',
+        #},
+        #'api': {
+        #    'handlers': ['console'] if DEBUG else ['file_api'],
+        #    'level': 'DEBUG',
+        #}
     },
 }
 

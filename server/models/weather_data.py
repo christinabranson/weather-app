@@ -9,6 +9,44 @@ class WeatherData(models.Model):
     class Meta:
         ordering = ['date']
 
+    @staticmethod
+    def future_weather():
+        from django.conf import settings
+        from datetime import datetime, timedelta, time
+        from datetime import time as customtime
+        import pytz
+        import requests
+        import os
+        import json
+        from server.models import WeatherData
+
+        key = settings.DARK_SKY_API_KEY
+        lat = settings.DARK_SKY_API_LAT
+        lon = settings.DARK_SKY_API_LON
+
+        baseUrl = "https://api.darksky.net/forecast/"
+        tz = pytz.timezone('America/New_York')
+
+        time_now = datetime.now(tz=tz).date()
+        time_midnight = tz.localize(datetime.combine(time_now, customtime(0, 0)), is_dst=None)
+
+        url = url = baseUrl + key + "/" + lat + "," + lon
+
+        response = requests.get(url)
+        if response:
+            json_data = json.loads(response.text)
+            for dailydata in json_data['daily']['data']:
+                # print dailydata['time']
+                time = dailydata['time']
+                tz = pytz.timezone('America/New_York')
+                model_datetime = model_datetime = datetime.fromtimestamp(time, tz=tz)
+
+                daily_precip = WeatherData.objects.get_or_create(date=model_datetime)[0]
+                daily_precip.precip_amount = dailydata['precipIntensity']
+                daily_precip.save()
+            return "yay"
+        else:
+            return "fail"
 
     @staticmethod
     def get_at_a_glance():

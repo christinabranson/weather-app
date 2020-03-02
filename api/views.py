@@ -10,6 +10,11 @@ from server.models import WeatherData
 
 logger = logging.getLogger(__name__)
 
+def future_weather(request):
+    logger.debug("api.views.home.future_weather")
+    data = WeatherData.future_weather()
+    logger.debug(data)
+    return JsonResponse(data, safe=False)
 
 def kitchensink(request):
     logger.debug("api.views.home.kitchensink")
