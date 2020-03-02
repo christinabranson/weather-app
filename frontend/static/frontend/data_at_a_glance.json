@@ -1,0 +1,261 @@
+{
+    "data": [
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0,
+                "total": 0
+            },
+            "labels": {
+                "date": "24 February",
+                "date_short": "24 Feb",
+                "day": "Monday",
+                "day_short": "Mon",
+                "label": "24 February | Monday",
+                "label_short": "Mon, 24 Feb"
+            },
+            "num": -7
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0,
+                "total": 0
+            },
+            "labels": {
+                "date": "25 February",
+                "date_short": "25 Feb",
+                "day": "Tuesday",
+                "day_short": "Tue",
+                "label": "25 February | Tuesday",
+                "label_short": "Tue, 25 Feb"
+            },
+            "num": -6
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0,
+                "total": 0
+            },
+            "labels": {
+                "date": "26 February",
+                "date_short": "26 Feb",
+                "day": "Wednesday",
+                "day_short": "Wed",
+                "label": "26 February | Wednesday",
+                "label_short": "Wed, 26 Feb"
+            },
+            "num": -5
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0,
+                "total": 0
+            },
+            "labels": {
+                "date": "27 February",
+                "date_short": "27 Feb",
+                "day": "Thursday",
+                "day_short": "Thu",
+                "label": "27 February | Thursday",
+                "label_short": "Thu, 27 Feb"
+            },
+            "num": -4
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0,
+                "total": 0
+            },
+            "labels": {
+                "date": "28 February",
+                "date_short": "28 Feb",
+                "day": "Friday",
+                "day_short": "Fri",
+                "label": "28 February | Friday",
+                "label_short": "Fri, 28 Feb"
+            },
+            "num": -3
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0,
+                "total": 0
+            },
+            "labels": {
+                "date": "29 February",
+                "date_short": "29 Feb",
+                "day": "Saturday",
+                "day_short": "Sat",
+                "label": "29 February | Saturday",
+                "label_short": "Sat, 29 Feb"
+            },
+            "num": -2
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.0,
+                "total": 0.0
+            },
+            "labels": {
+                "date": "01 March",
+                "date_short": "01 Mar",
+                "day": "Sunday",
+                "day_short": "Sun",
+                "label": "01 March | Sunday",
+                "label_short": "Sun, 01 Mar"
+            },
+            "num": -1
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.0,
+                "total": 0.0
+            },
+            "labels": {
+                "date": "02 March",
+                "date_short": "02 Mar",
+                "day": "Monday",
+                "day_short": "Mon",
+                "label": "02 March | Monday",
+                "label_short": "Mon, 02 Mar"
+            },
+            "num": 0
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.02,
+                "total": 0.02
+            },
+            "labels": {
+                "date": "03 March",
+                "date_short": "03 Mar",
+                "day": "Tuesday",
+                "day_short": "Tue",
+                "label": "03 March | Tuesday",
+                "label_short": "Tue, 03 Mar"
+            },
+            "num": 1
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.0,
+                "total": 0.0
+            },
+            "labels": {
+                "date": "04 March",
+                "date_short": "04 Mar",
+                "day": "Wednesday",
+                "day_short": "Wed",
+                "label": "04 March | Wednesday",
+                "label_short": "Wed, 04 Mar"
+            },
+            "num": 2
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.0,
+                "total": 0.0
+            },
+            "labels": {
+                "date": "05 March",
+                "date_short": "05 Mar",
+                "day": "Thursday",
+                "day_short": "Thu",
+                "label": "05 March | Thursday",
+                "label_short": "Thu, 05 Mar"
+            },
+            "num": 3
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.02,
+                "total": 0.02
+            },
+            "labels": {
+                "date": "06 March",
+                "date_short": "06 Mar",
+                "day": "Friday",
+                "day_short": "Fri",
+                "label": "06 March | Friday",
+                "label_short": "Fri, 06 Mar"
+            },
+            "num": 4
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.0,
+                "total": 0.0
+            },
+            "labels": {
+                "date": "07 March",
+                "date_short": "07 Mar",
+                "day": "Saturday",
+                "day_short": "Sat",
+                "label": "07 March | Saturday",
+                "label_short": "Sat, 07 Mar"
+            },
+            "num": 5
+        },
+        {
+            "data": {
+                "manual": 0,
+                "rain": 0.0,
+                "total": 0.0
+            },
+            "labels": {
+                "date": "08 March",
+                "date_short": "08 Mar",
+                "day": "Sunday",
+                "day_short": "Sun",
+                "label": "08 March | Sunday",
+                "label_short": "Sun, 08 Mar"
+            },
+            "num": 6
+        }
+    ],
+    "summary": {
+        "date_created": "03/02/2020, 10:53:14",
+        "last_day": {
+            "manual": 0,
+            "rain": 0.0,
+            "start": "2020-03-01 00:00:00-05:00",
+            "stop": "2020-03-02 00:00:00-05:00",
+            "total": 0.0
+        },
+        "last_week": {
+            "manual": 0,
+            "rain": 0.0,
+            "start": "2020-02-24 00:00:00-05:00",
+            "stop": "2020-03-02 00:00:00-05:00",
+            "total": 0.0
+        },
+        "next_day": {
+            "rain": 0.02,
+            "start": "2020-03-02 00:00:00-05:00",
+            "stop": "2020-03-03 00:00:00-05:00",
+            "total": 0.02
+        },
+        "next_week": {
+            "rain": 0.0379,
+            "start": "2020-03-02 00:00:00-05:00",
+            "stop": "2020-03-09 00:00:00-05:00",
+            "total": 0.0379
+        },
+        "recommendation": {
+            "bool": true,
+            "message": "It hasn't rained more than 1 inch in the last day"
+        }
+    }
+}

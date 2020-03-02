@@ -14,19 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from api import views as api_views
-from frontend import views as frontend_views
 from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
-    path('api/kitchensink', api_views.kitchensink, name='kitchensink'),
+    path('api/future_weather', api_views.future_weather, name='api.future_weather'),
+    path('api/kitchensink', api_views.kitchensink, name='api.kitchensink'),
+    path('api/at_a_glance', api_views.at_a_glance, name='api.at_a_glance'),
+    path('', include('frontend.urls')),
+    path('react/', include('frontend_react.urls')),
     path('admin/', admin.site.urls),
 ]
 
 # we only need the front end code on the development
 if settings.DEBUG:
     urlpatterns.append(path('', frontend_views.index, name='index'))
-else:
-    urlpatterns.append(path('', api_views.home, name='index'))

@@ -10,9 +10,20 @@ from server.models import WeatherData
 
 logger = logging.getLogger(__name__)
 
+def future_weather(request):
+    logger.debug("api.views.home.future_weather")
+    data = WeatherData.future_weather()
+    logger.debug(data)
+    return JsonResponse(data, safe=False)
 
 def kitchensink(request):
-    logger.debug("baseapp.views.home.kitchensink")
+    logger.debug("api.views.home.kitchensink")
     data = WeatherData.get_kitchen_sink()
+    logger.debug(data)
+    return JsonResponse(data, safe=False)
+
+def at_a_glance(request):
+    logger.debug("api.views.home.at_a_glance")
+    data = WeatherData.get_at_a_glance()
     logger.debug(data)
     return JsonResponse(data, safe=False)

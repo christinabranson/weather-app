@@ -1,0 +1,277 @@
+{% extends 'frontend/base.html' %}
+{% block title %}Should I Water My Garden?{% endblock %}
+{% block content %}
+<div class="row">
+   <div class="col col-12">
+      <div class="alert {% if at_a_glance_data.summary.recommendation.bool == True %} alert-danger {% else %} alert-success {% endif %}">
+         <span>
+         <strong>{% if at_a_glance_data.summary.recommendation.bool == True %} Water Your Garden! {% else %} Don't Water! {% endif %}</strong>
+         {{ at_a_glance_data.summary.recommendation.message }}
+         </span>
+      </div>
+   </div>
+</div>
+<div class="row">
+<div class="col col-md-4 col-12">
+   <div class="card">
+      <div class="card-header">
+         <h4 class="card-title">Today</h4>
+         <p class="card-category">{{ at_a_glance_data.summary.next_day.rain }}in of rain expected</p>
+            <div class="card-body">
+               <div id="chart_sidebar1" class="ct-chart"></div>
+            </div>
+      </div>
+   </div>
+   <div class="card">
+      <div class="card-header">
+         <h4 class="card-title">Yesterday</h4>
+         <p class="card-category">{{ at_a_glance_data.summary.last_day.total }} inches of rain + manual watering</p>
+            <div class="card-body">
+               <div id="chart_sidebar2" class="ct-chart"></div>
+               <div class="legend">
+                  <i class="fa fa-circle text-info"></i> Rain + Manual
+                  <i class="fa fa-circle text-danger"></i> Needed
+               </div>
+            </div>
+      </div>
+   </div>
+   <div class="card">
+      <div class="card-header">
+         <h4 class="card-title">Last Week</h4>
+         <p class="card-category">{{ at_a_glance_data.summary.last_week.total }} inches of rain + manual watering</p>
+            <div class="card-body">
+               <div id="chart_sidebar3" class="ct-chart"></div>
+               <div class="legend">
+                  <i class="fa fa-circle text-info"></i> Rain + Manual
+                  <i class="fa fa-circle text-danger"></i> Needed
+               </div>
+            </div>
+      </div>
+   </div>
+</div>
+<div class="col col-md-8 col-12">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="card">
+            <div class="card-header">
+               <h4 class="card-title">Total Precipitation Values & Forecast</h4>
+            </div>
+            <div class="card-body">
+               <div id="chart_AllData" class="ct-chart"></div>
+               <div class="legend">
+                  <i class="fa fa-circle text-info"></i> Rain
+                  <i class="fa fa-circle text-danger"></i> Manual
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-4">
+         <div class="card ">
+            <div class="card-header ">
+               <h4 class="card-title">Rain vs Manual</h4>
+               <p class="card-category">Over the past week</p>
+            </div>
+            <div class="card-body ">
+               <div id="chart_RainVSManual" class="ct-chart ct-perfect-fourth"></div>
+               <div class="legend">
+                  <i class="fa fa-circle text-info"></i> % Rain
+                  <i class="fa fa-circle text-danger"></i> % Manual
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-8">
+         <div class="card ">
+            <div class="card-header ">
+               <h4 class="card-title">Last Week's Data</h4>
+            </div>
+            <div class="card-body ">
+               <div id="chart_LastWeekData" class="ct-chart"></div>
+            </div>
+            <div class="card-footer ">
+               <div class="legend">
+                  <i class="fa fa-circle text-info"></i> Rain
+                  <i class="fa fa-circle text-danger"></i> Manual
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-12">
+         <div class="card strpied-tabled-with-hover">
+            <div class="card-header ">
+               <h4 class="card-title">2 Week Data</h4>
+               <p class="card-category">Data from the last 7 days, as well as the forecast for the next week</p>
+            </div>
+            <div class="card-body table-full-width table-responsive">
+               <table class="table table-hover table-striped">
+                  <thead>
+                     <th>Day</th>
+                     <th>Date</th>
+                     <th>Rain</th>
+                     <th>Manual</th>
+                     <th>Total</th>
+                  </thead>
+                  <tbody>
+                     {% for data in at_a_glance_data.data %}
+                     <tr class="{% if data.num == 0 %} active {% endif %}">
+                        <td>{{ data.num }}</td>
+                        <td>{{ data.labels.label }}</td>
+                        <td>{{ data.data.rain }} {% if data.num >= 0 %} (forecast) {% endif %}</td>
+                        <td>{% if data.num < 0 %} {{ data.data.manual }} {% endif %}</td>
+                        <td>{{ data.data.total }} {% if data.num >= 0 %} (forecast) {% endif %}</td>
+                     </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block updated_date %}
+{{ at_a_glance_data.summary.date_created }}
+{% endblock %}
+{% block page_js %}
+<script type="text/javascript">
+   $().ready(function() {
+
+      // Sidebar Chart Today
+       var amountTotal = {{ at_a_glance_data.summary.next_day.total }};
+
+       if (amountTotal > 0) {
+         var percentFill = Math.min(1, amountTotal);;
+         var percentManual = 1 - percentFill;
+
+         percentFill = Math.round((percentFill + Number.EPSILON) * 100) / 100;
+         percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
+
+          new Chartist.Pie('#chart_sidebar1', {
+             series: [percentFill, percentManual]
+           }, {
+             donut: true,
+             donutWidth: 60,
+             donutSolid: true,
+             startAngle: 270,
+             total: 1,
+             showLabel: true
+           });
+         } else {
+            $("#chart_sidebar1").html("No rain expected");
+         }
+
+      // Sidebar Chart Yesterday
+       var amountTotal = {{ at_a_glance_data.summary.last_day.total }};
+
+       if (amountTotal > 0) {
+         var percentFill = Math.min(1, amountTotal);;
+         var percentManual = 1 - percentFill;
+
+         percentFill = Math.round((percentFill + Number.EPSILON) * 100) / 100;
+         percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
+
+          new Chartist.Pie('#chart_sidebar2', {
+             series: [percentFill, percentManual]
+           }, {
+             donut: true,
+             donutWidth: 60,
+             donutSolid: true,
+             startAngle: 270,
+             total: 1,
+             showLabel: true
+           });
+         } else {
+            $("#chart_sidebar2").html("No rain or manual watering");
+         }
+
+      // Sidebar Chart Last Week
+       var amountTotal = {{ at_a_glance_data.summary.last_week.total }};
+
+       if (amountTotal > 0) {
+         var percentFill = Math.min(1, amountTotal);;
+         var percentManual = 1 - percentFill;
+
+         percentFill = Math.round((percentFill + Number.EPSILON) * 100) / 100;
+         percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
+
+          new Chartist.Pie('#chart_sidebar3', {
+             series: [percentFill, percentManual]
+           }, {
+             donut: true,
+             donutWidth: 60,
+             donutSolid: true,
+             startAngle: 270,
+             total: 1,
+             showLabel: true
+           });
+         } else {
+            $("#chart_sidebar3").html("No rain or manual watering");
+         }
+
+      // Prep All Data Chart
+      new Chartist.Line('#chart_AllData', {
+         labels: [{% for data in at_a_glance_data.data %}'{{ data.labels.date_short }}',{%endfor%}],
+        series: [
+          [{% for data in at_a_glance_data.data %}'{{ data.data.rain }}',{%endfor%}],
+          [{% for data in at_a_glance_data.data %}'{{ data.data.manual }}',{%endfor%}],
+        ]
+      }, {
+        low: 0,
+        showArea: true,
+        showLine: false,
+        showPoint: false,
+      });
+
+       // Prep Rain vs Manual Chart
+       // All data is for the last week
+       var amountRain = {{ at_a_glance_data.summary.last_week.rain }};
+       var amountManual = {{ at_a_glance_data.summary.last_week.manual }};
+       var amountTotal = {{ at_a_glance_data.summary.last_week.total }};
+
+       var percentRain = amountRain / amountTotal * 100;
+       var percentManual = amountManual / amountTotal * 100;
+
+       // round to nearest 2
+       percentRain = Math.round((percentRain + Number.EPSILON) * 100) / 100;
+       percentManual = Math.round((percentManual + Number.EPSILON) * 100) / 100;
+
+       new Chartist.Pie('#chart_RainVSManual', {
+          series: [percentRain, percentManual]
+        }, {
+          donut: true,
+          donutWidth: 60,
+          donutSolid: true,
+          startAngle: 270,
+          total: 200,
+          showLabel: true
+        });
+
+        // Prep last week bar graph
+        new Chartist.Bar('#chart_LastWeekData', {
+          labels: [{% for data in at_a_glance_data.data %} {%if data.num < 0 %} '{{ data.labels.date_short }}', {% endif%}{%endfor%}],
+          series: [
+
+            [{% for data in at_a_glance_data.data %} {%if data.num < 0 %} {{ data.data.rain }}, {% endif%}{%endfor%}],
+            [{% for data in at_a_glance_data.data %} {%if data.num < 0 %} {{ data.data.manual }}, {% endif%}{%endfor%}],
+          ]
+        }, {
+          stackBars: true,
+          axisY: {
+            labelInterpolationFnc: function(value) {
+              return (value) + 'in';
+            }
+          }
+        }).on('draw', function(data) {
+          if(data.type === 'bar') {
+            data.element.attr({
+              style: 'stroke-width: 30px'
+            });
+          }
+        });
+   });
+</script>
+{% endblock %}
